@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  psql:
+    container_name: epicevents-psql
+    image: postgres:14.4
+    restart: unless-stopped
+    hostname: psql_db
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    environment:
+      - POSTGRES_PASSWORD=psql_docker
+    ports:
+      - 5432:5432
+    volumes:
+      - ./.psql-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
