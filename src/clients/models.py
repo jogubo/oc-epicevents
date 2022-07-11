@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from contracts.models import Contract
+
 
 class Client(models.Model):
 
@@ -17,7 +19,13 @@ class Client(models.Model):
         null=True,
         on_delete=models.SET_NULL
     )
-    is_client = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+    def is_client(self):
+        contracts = Contract.objects.filter(client=self, status=False)
+        if contracts:
+            return True
+        else:
+            return False

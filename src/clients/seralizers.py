@@ -34,3 +34,6 @@ class ClientSerializer(ModelSerializer):
         client.save()
 
         return client
+
+    def update(self, instance, validated_data):
+        return super().update(instance, validated_data)

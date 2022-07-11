@@ -20,16 +20,24 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from clients.views import ClientViewSet
+from contracts.views import ContractViewSet
 
 router = routers.DefaultRouter(trailing_slash=True)
 
-# # Generate:
 # /clients/
 # /clients/{client_id}
 router.register(
     'clients',
     ClientViewSet,
     basename='clients',
+)
+
+# /contracts/
+# /contracts/{contract_id}
+router.register(
+    'contracts',
+    ContractViewSet,
+    basename='conracts'
 )
 
 
