@@ -19,11 +19,20 @@ from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.views import TokenRefreshView
 
+from users.views import UserViewSet
 from clients.views import ClientViewSet
 from contracts.views import ContractViewSet
 from events.views import EventViewSet
 
 router = routers.DefaultRouter(trailing_slash=True)
+
+# /users/
+# /users/{user_id}
+router.register(
+    'users',
+    UserViewSet,
+    basename='users',
+)
 
 # /clients/
 # /clients/{client_id}

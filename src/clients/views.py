@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
 from clients.models import Client
-from clients.seralizers import ClientSerializer
+from clients.serializers import ClientSerializer
 
 
 class ClientViewSet(ModelViewSet):

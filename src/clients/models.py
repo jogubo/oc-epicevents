@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 from contracts.models import Contract
 
@@ -15,7 +15,7 @@ class Client(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     sales_contact = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         null=True,
         on_delete=models.SET_NULL
     )

@@ -2,18 +2,18 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
-from contracts.models import Contract
-from contracts.serializers import ContractSerializer
+from users.models import User
+from users.serializers import UserSerializer
 
 
-class ContractViewSet(ModelViewSet):
+class UserViewSet(ModelViewSet):
 
-    serializer_class = ContractSerializer
+    serializer_class = UserSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = '__all__'
 
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        queryset = Contract.objects.all()
+        queryset = User.objects.all()
         return queryset

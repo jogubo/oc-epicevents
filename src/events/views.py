@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
 from events.models import Event
-from events.seralizers import EventSerializer
+from events.serializers import EventSerializer
 
 
 class EventViewSet(ModelViewSet):
