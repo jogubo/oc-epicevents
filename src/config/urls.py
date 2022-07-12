@@ -21,6 +21,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 from clients.views import ClientViewSet
 from contracts.views import ContractViewSet
+from events.views import EventViewSet
 
 router = routers.DefaultRouter(trailing_slash=True)
 
@@ -38,6 +39,14 @@ router.register(
     'contracts',
     ContractViewSet,
     basename='conracts'
+)
+
+# /events/
+# /events/{event_id}
+router.register(
+    'events',
+    EventViewSet,
+    basename='events'
 )
 
 

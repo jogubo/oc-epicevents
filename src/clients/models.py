@@ -21,11 +21,8 @@ class Client(models.Model):
     )
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.compagny_name}'
 
     def is_client(self):
         contracts = Contract.objects.filter(client=self, status=False)
-        if contracts:
-            return True
-        else:
-            return False
+        return True if contracts else False

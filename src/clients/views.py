@@ -10,7 +10,7 @@ class ClientViewSet(ModelViewSet):
 
     serializer_class = ClientSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['first_name', 'last_name']
+    filterset_fields = '__all__'
 
     permission_classes = (IsAuthenticated,)
 

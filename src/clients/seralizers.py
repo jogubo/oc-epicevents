@@ -20,7 +20,7 @@ class ClientSerializer(ModelSerializer):
             'sales_contact',
             'is_client'
         ]
-        read_only_fields = ('date_created', 'date_updated', 'is_client')
+        read_only_fields = ('date_created', 'date_updated',)
 
     def create(self, validated_data):
         client = Client.objects.create(

@@ -10,7 +10,7 @@ class ContractViewSet(ModelViewSet):
 
     serializer_class = ContractSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['client', 'sales_contact', 'status']
+    filterset_fields = '__all__'
 
     permission_classes = (IsAuthenticated,)
 
