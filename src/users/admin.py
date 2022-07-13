@@ -49,6 +49,7 @@ class UserCreationForm(forms.ModelForm):
                 'first_name',
                 'last_name',
                 'is_active',
+                'is_staff',
                 'is_admin'
             )
 

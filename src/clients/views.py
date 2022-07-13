@@ -4,6 +4,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from clients.models import Client
 from clients.serializers import ClientSerializer
+from clients.permissions import IsSalesContactOrReadOnly
+from clients.permissions import IsManagerOrReadOnly
 from clients.permissions import IsSalesman
 
 
@@ -13,7 +15,11 @@ class ClientViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = '__all__'
 
-    permission_classes = (IsAuthenticated, IsSalesman)
+    permission_classes = (
+        IsAuthenticated,
+        IsSalesman,
+        IsSalesContactOrReadOnly | IsManagerOrReadOnly
+    )
 
     def get_queryset(self):
         queryset = Client.objects.all()

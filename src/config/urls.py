@@ -65,7 +65,7 @@ urlpatterns = [
         admin.site.urls
     ),
     path(
-        'api/auth/',
+        'api-auth/',
         include('rest_framework.urls')
     ),
     path(
