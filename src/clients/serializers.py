@@ -28,6 +28,7 @@ class ClientSerializer(ModelSerializer):
             last_name=validated_data['last_name'],
             email=validated_data['email'],
             phone=validated_data['phone'],
+            mobile=validated_data['mobile'],
             compagny_name=validated_data['compagny_name'],
             sales_contact=validated_data['sales_contact'],
         )

@@ -9,16 +9,16 @@ class UserSerializer(ModelSerializer):
         model = User
         fields = [
             'id',
-            'email',
             'first_name',
             'last_name',
+            'email',
             'password',
         ]
 
-        read_only_fields = ('email', 'first_name', 'last_name')
-
     def create(self, validated_data):
         user = User.objects.create_user(
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
             email=validated_data['email'],
             password=validated_data['password'],
         )
