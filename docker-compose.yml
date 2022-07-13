@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   psql:
-    container_name: epicevents-psql
+    container_name: epicevents_psql
     image: postgres:14.4
     restart: unless-stopped
     hostname: psql_db
