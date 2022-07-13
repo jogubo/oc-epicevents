@@ -4,6 +4,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from users.models import User
 from users.serializers import UserSerializer
+from users.permissions import ReadOnly
 
 
 class UserViewSet(ModelViewSet):
@@ -12,7 +13,7 @@ class UserViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = '__all__'
 
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, ReadOnly)
 
     def get_queryset(self):
         queryset = User.objects.all()
