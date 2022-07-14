@@ -58,9 +58,14 @@ class UserAdmin(BaseUserAdmin):
 
     list_display = ('email', 'name')
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_admin', 'groups', 'user_permissions')}),
+        (
+            'Personal info',
+            {'fields': ('first_name', 'last_name', 'email', 'password')}
+        ),
+        (
+            'Permissions',
+            {'fields': ('is_active', 'is_staff', 'is_admin', 'groups')}
+        ),
     )
     add_fieldsets = (
         (None, {
@@ -85,4 +90,4 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(User, UserAdmin)
-admin.site.unregister(Group)
+# admin.site.unregister(Group)

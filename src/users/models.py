@@ -45,7 +45,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         return True if self == obj.support_contact else False
 
     def has_perm(self, perm, obj=None):
-        return True
+        if self.is_admin:
+            return True
+        elif perm in self.get_all_permissions(obj=obj):
+            return True
+        else:
+            return False
 
     def has_module_perms(self, app_label):
         return True
