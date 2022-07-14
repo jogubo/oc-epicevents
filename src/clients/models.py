@@ -16,6 +16,7 @@ class Client(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
     sales_contact = models.ForeignKey(
         settings.AUTH_USER_MODEL,
+        limit_choices_to={'groups__name': 'Salesman'},
         null=True,
         on_delete=models.SET_NULL
     )

@@ -9,8 +9,9 @@ class Event(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    support = models.ForeignKey(
+    support_contact = models.ForeignKey(
         settings.AUTH_USER_MODEL,
+        limit_choices_to={'groups__name': 'Support'},
         null=True,
         on_delete=models.SET_NULL
     )
