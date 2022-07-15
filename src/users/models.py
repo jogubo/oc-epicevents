@@ -11,6 +11,7 @@ class UserManager(BaseUserManager):
 
         user = self.model(email=self.normalize_email(email))
         user.set_password(password)
+        user.is_staff = False
         user.save()
         return user
 
@@ -36,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
 
     def is_sales_contact(self, obj):
         return True if self == obj.sales_contact else False

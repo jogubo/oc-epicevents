@@ -49,7 +49,6 @@ class UserCreationForm(forms.ModelForm):
                 'first_name',
                 'last_name',
                 'is_active',
-                'is_staff',
                 'is_admin'
             )
 
@@ -64,7 +63,7 @@ class UserAdmin(BaseUserAdmin):
         ),
         (
             'Permissions',
-            {'fields': ('groups',)}
+            {'fields': ('groups', 'is_staff')}
         ),
     )
     add_fieldsets = (
@@ -89,7 +88,8 @@ class UserAdmin(BaseUserAdmin):
                f'{obj.last_name.upper()}'
 
     def teams(self, obj):
-        return ','.join([g.name for g in obj.groups.all()]) if obj.groups.count() else ''
+        groups = [group.name for group in obj.groups.all()]
+        return ', '.join(groups) if obj.groups.count() else ''
 
 
 admin.site.register(User, UserAdmin)
