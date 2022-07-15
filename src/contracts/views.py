@@ -1,10 +1,10 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
 from contracts.models import Contract
 from contracts.serializers import ContractSerializer
-from contracts.permissions import IsManager, IsSalesman
+
+from users.permissions import UserHasPermission
 
 
 class ContractViewSet(ModelViewSet):
@@ -13,7 +13,7 @@ class ContractViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = '__all__'
 
-    permission_classes = (IsAuthenticated, IsManager | IsSalesman)
+    permission_classes = (UserHasPermission,)
 
     def get_queryset(self):
         queryset = Contract.objects.all()

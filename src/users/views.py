@@ -1,10 +1,10 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
 from users.models import User
 from users.serializers import UserSerializer
-from users.permissions import ReadOnly
+
+from users.permissions import UserHasPermission
 
 
 class UserViewSet(ModelViewSet):
@@ -13,7 +13,7 @@ class UserViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = '__all__'
 
-    permission_classes = (IsAuthenticated, ReadOnly)
+    permission_classes = (UserHasPermission,)
 
     def get_queryset(self):
         queryset = User.objects.all()
