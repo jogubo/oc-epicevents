@@ -89,4 +89,4 @@ python src/manage.py runserver
 - Can read `Client` with API
 - Can read and update `Event` with API
 
-*Can update only if user is support contact and event date has not passe.*
+*Can update only if user is support contact and event date has not passed.*
