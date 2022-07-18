@@ -5,7 +5,7 @@ from clients.models import Client
 
 class ClientAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'compagny_name', 'email')
+    list_display = ('name', 'compagny_name', 'email', 'is_client')
     list_filter = ('last_name', 'compagny_name')
 
     @admin.display(empty_value='')

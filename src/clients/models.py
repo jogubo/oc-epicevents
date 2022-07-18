@@ -1,8 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-from contracts.models import Contract
-
 
 class Client(models.Model):
 
@@ -20,10 +18,7 @@ class Client(models.Model):
         null=True,
         on_delete=models.SET_NULL
     )
+    is_client = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.compagny_name}'
-
-    def is_client(self):
-        contracts = Contract.objects.filter(client=self, status=False)
-        return True if contracts else False

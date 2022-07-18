@@ -63,7 +63,7 @@ class UserAdmin(BaseUserAdmin):
         ),
         (
             'Permissions',
-            {'fields': ('groups', 'is_staff')}
+            {'fields': ('groups',)}
         ),
     )
     add_fieldsets = (

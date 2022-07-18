@@ -21,6 +21,7 @@ class IsSalesman(BasePermission):
             return request.user.groups.filter(name='Salesman').exists()
         elif view.action in ['update']:
             contract = get_object_or_404(Contract, pk=view.kwargs['pk'])
-            return request.user.is_sales_contact(contract)
+            if not contract.status:
+                return request.user.is_sales_contact(contract)
         else:
             return False

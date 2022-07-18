@@ -12,11 +12,12 @@ class Contract(models.Model):
     )
     client = models.ForeignKey(
         'clients.Client',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        limit_choices_to={'is_client': True},
     )
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    status = models.BooleanField(default=False)
+    status = models.BooleanField(default=False, verbose_name='Signed')
     amount = models.FloatField()
     payment_due = models.DateTimeField()
 

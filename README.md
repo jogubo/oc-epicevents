@@ -16,11 +16,11 @@ docker-compose up
 ### Install and run Django
 
 If you use default config in `setting.py`, you must set environment variable:
-- `DB_NAME`
-- `DB_USER`
-- `DB_PASSWORD`
-- `DB_HOST`
-- `DB_PORT`
+- `DB_NAME=postgres`
+- `DB_USER=postgres`
+- `DB_PASSWORD=psql_docker`
+- `DB_HOST=localhost`
+- `DB_PORT=5432`
 
 Refer to your system documentation to define environment variables.
 [Linux Environment variable](https://wiki.archlinux.org/title/Environment_variables#Per_user)
@@ -69,21 +69,22 @@ python src/manage.py runserver
 
 ### Manager
 
-- Can read, create and uddate `User` with django admin
-- Can read, create and update `Client` with django admin or API
-- Can read, create and update `Contract` with django admin or API
-- Can read, create and update `Event` with django admin or API
+- Can read, create, update and destroy `User` with django admin
+- Can read, create, update and destroy `Client` with django admin or API
+- Can read, create, update and destroy `Contract` with django admin or API
+- Can read, create, update and destroy `Event` with django admin or API
 
 
 ### Salesman
 
 - Can read, create and update `Client` with API
 - Can read, create and update `Contract` with API
-- Can read, create and update `Event` with API
+- Can read and create `Event` with API
+*Can update only if user is sales contact.*
 
 
 ### Suport
 
 - Can read `Client` with API
-- Can read `Contract` with API
 - Can read and update `Event` with API
+*Can update only if user is support contact and event date has not passe. *

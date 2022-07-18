@@ -6,7 +6,11 @@ from clients.models import Client
 
 class Event(models.Model):
 
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    client = models.ForeignKey(
+        Client,
+        on_delete=models.CASCADE,
+        related_name='events'
+    )
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     support_contact = models.ForeignKey(

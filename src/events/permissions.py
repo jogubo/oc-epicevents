@@ -1,3 +1,5 @@
+from datetime import date
+
 from rest_framework.permissions import BasePermission
 from django.shortcuts import get_object_or_404
 
@@ -29,9 +31,10 @@ class IsSupport(BasePermission):
     def has_permission(self, request, view):
 
         if view.action in ['list', 'retrieve']:
-            return request.user.groups.filter(name='Salesman').exists()
+            return request.user.groups.filter(name='Support').exists()
         elif view.action in ['update']:
             event = get_object_or_404(Event, pk=view.kwargs['pk'])
-            return request.user.is_support_contact(event)
+            if event.event_date.date() > date.today():
+                return request.user.is_support_contact(event)
         else:
             return False
