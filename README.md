@@ -80,6 +80,7 @@ python src/manage.py runserver
 - Can read, create and update `Client` with API
 - Can read, create and update `Contract` with API
 - Can read and create `Event` with API
+
 *Can update only if user is sales contact.*
 
 
@@ -87,4 +88,5 @@ python src/manage.py runserver
 
 - Can read `Client` with API
 - Can read and update `Event` with API
-*Can update only if user is support contact and event date has not passe. *
+
+*Can update only if user is support contact and event date has not passe.*
