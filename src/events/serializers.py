@@ -22,7 +22,7 @@ class EventSerializer(ModelSerializer):
     def create(self, validated_data):
         event = Event.objects.create(
             client=validated_data['client'],
-            support=validated_data['support_contact'],
+            support_contact=validated_data['support_contact'],
             attendees=validated_data['attendees'],
             event_date=validated_data['event_date'],
             note=validated_data['note'],

@@ -8,6 +8,7 @@ class Event(models.Model):
 
     client = models.ForeignKey(
         Client,
+        limit_choices_to={'is_client': True},
         on_delete=models.CASCADE,
         related_name='events'
     )
